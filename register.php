@@ -6,6 +6,9 @@
  * License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
  */
 
+session_start();
+$_SESSION['validation_code']='苹果';
+
 define('PUN_ROOT', dirname(__FILE__).'/');
 require PUN_ROOT.'include/common.php';
 
@@ -90,6 +93,8 @@ if (isset($_POST['form_sent']))
 
 	// Validate username and passwords
 	check_username($username);
+  if ($_SESSION['validation_code'] != $_POST['validation_code'])
+    $errors[] = $lang_prof_reg['validation code incorrect'];
 
 	if (pun_strlen($password1) < 4)
 		$errors[] = $lang_prof_reg['Pass too short'];
@@ -304,6 +309,11 @@ if (!empty($errors))
 					<p><?php echo $lang_register['Desc 1'] ?></p>
 					<p><?php echo $lang_register['Desc 2'] ?></p>
 				</div>
+        <fieldset>
+        <legend>请输入图片中的汉字：<img src='validation_code.png'/>
+          <input type='text' name='validation_code' />
+        </legend>
+        </fieldset>
 				<fieldset>
 					<legend><?php echo $lang_register['Username legend'] ?></legend>
 					<div class="infldset">

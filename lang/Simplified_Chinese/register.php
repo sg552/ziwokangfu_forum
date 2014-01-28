@@ -2,7 +2,7 @@
 
 // Language definitions used in register.php
 $lang_register = array(
-
+'validation code incorrect' => '验证码不对',
 // Miscellaneous
 'No new regs'				=>	'该论坛当前不接受新用户注册。',
 'Reg cancel redirect'		=>	'注册已取消。正在跳转 …',
